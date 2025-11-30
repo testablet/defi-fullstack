@@ -1,0 +1,10 @@
+vendor
+var/cache
+var/log
+.phpunit.cache
+coverage
+tests
+.git
+
+
+

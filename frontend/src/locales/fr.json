@@ -1,0 +1,134 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "routes": "Routes",
+    "stats": "Statistiques"
+  },
+  "home": {
+    "title": "Train Routing System",
+    "subtitle": "Solution complète de routage de trains avec calcul de distances optimisées et analyse statistique avancée",
+    "calculateRoute": "Calculer un trajet",
+    "viewStats": "Voir les statistiques",
+    "aboutTitle": "À propos du projet",
+    "aboutSubtitle": "Une application full-stack moderne pour la gestion et l'analyse de routes ferroviaires",
+    "aboutText1": "Ce projet a été développé dans le cadre du {challenge} de {mob}. Il s'agit d'une application complète permettant de calculer des routes optimales entre différentes stations ferroviaires en utilisant des algorithmes de routage avancés.",
+    "aboutText2": "L'application offre une interface utilisateur intuitive pour créer des routes entre stations, visualiser les trajets calculés, et analyser les statistiques agrégées par code analytique. Elle intègre également un système d'authentification sécurisé et une API REST complète pour l'intégration avec d'autres systèmes.",
+    "challenge": "défi-fullstack",
+    "mob": "MOB - Montreux Oberland Bernois",
+    "features": {
+      "routeCalculation": {
+        "title": "Calcul de routes optimales",
+        "description": "Algorithme de Dijkstra pour trouver le chemin le plus court entre deux stations"
+      },
+      "analytics": {
+        "title": "Statistiques analytiques",
+        "description": "Analyse agrégée des routes par code analytique avec visualisations graphiques"
+      },
+      "interface": {
+        "title": "Interface intuitive",
+        "description": "Design moderne et responsive avec visualisation interactive des trajets"
+      },
+      "api": {
+        "title": "API REST complète",
+        "description": "API conforme OpenAPI 3.1 avec documentation Swagger intégrée"
+      },
+      "auth": {
+        "title": "Authentification sécurisée",
+        "description": "Système JWT pour l'authentification et la sécurisation des endpoints"
+      },
+      "docker": {
+        "title": "Déploiement Docker",
+        "description": "Infrastructure containerisée avec Docker Compose pour un déploiement simplifié"
+      }
+    },
+    "techTitle": "Architecture technique",
+    "techSubtitle": "Une architecture moderne basée sur les meilleures pratiques du développement logiciel",
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "infrastructure": "Infrastructure & DevOps",
+    "practices": "Pratiques de développement",
+    "cicd": "CI/CD & Qualité",
+    "architecture": {
+      "ddd": {
+        "title": "Domain-Driven Design",
+        "description": "Architecture basée sur DDD avec séparation claire entre domaine métier, infrastructure et application. Le code métier est isolé des détails techniques."
+      },
+      "tdd": {
+        "title": "Test-Driven Development",
+        "description": "Développement guidé par les tests avec une couverture de code ≥80% pour le backend et le frontend. Tests unitaires et d'intégration complets."
+      },
+      "cleanCode": {
+        "title": "Clean Code & Standards",
+        "description": "Respect strict des standards PSR-12 pour PHP, ESLint/Prettier pour TypeScript, et analyse statique avec PHPStan niveau 8."
+      },
+      "cicd": {
+        "title": "CI/CD Automatisé",
+        "description": "Pipeline GitHub Actions complet avec build, tests, linting, scan de sécurité, et déploiement automatique. Qualité garantie à chaque commit."
+      }
+    },
+    "mobTitle": "Développé pour MOB",
+    "mobSubtitle": "Montreux Oberland Bernois",
+    "mobText1": "Ce projet a été réalisé dans le cadre du {challenge} de {mob}, démontrant l'application des meilleures pratiques de développement logiciel moderne, d'architecture logicielle, et de déploiement continu.",
+    "mobText2": "L'application illustre une approche professionnelle du développement full-stack, avec une séparation claire des responsabilités, une architecture évolutive, et une attention particulière portée à la qualité du code, aux tests, et à la sécurité.",
+    "developedBy": "Développé par {name}",
+    "copyright": "Copyright © {year} {company}"
+  },
+  "routes": {
+    "title": "Calculez votre trajet",
+    "subtitle": "Trouvez le chemin optimal entre les stations en utilisant des algorithmes de routage avancés",
+    "createRoute": "Créer un nouveau trajet",
+    "departureStation": "Station de départ",
+    "arrivalStation": "Station d'arrivée",
+    "selectDeparture": "Sélectionner la station de départ",
+    "selectArrival": "Sélectionner la station d'arrivée",
+    "analyticCode": "Code analytique",
+    "enterAnalyticCode": "Entrer le code analytique (ex: ANA-123)",
+    "calculating": "Calcul en cours...",
+    "calculateRoute": "Calculer le trajet",
+    "error": "Erreur",
+    "routeCalculated": "Trajet calculé avec succès !",
+    "optimalPathFound": "Votre chemin optimal a été trouvé",
+    "totalDistance": "Distance totale",
+    "kilometers": "kilomètres",
+    "stations": "Stations",
+    "stationsCount": "arrêts",
+    "path": "Chemin",
+    "analyticCodeLabel": "Code analytique",
+    "viewPath": "Voir le chemin",
+    "noRoute": "Aucun trajet calculé pour le moment",
+    "calculateFirst": "Calculez un trajet pour voir les résultats ici"
+  },
+  "stats": {
+    "title": "Tableau de bord analytique",
+    "subtitle": "Suivez et analysez les statistiques de trajets par code analytique",
+    "filters": "Filtres",
+    "fromDate": "Date de début",
+    "toDate": "Date de fin",
+    "groupBy": "Grouper par",
+    "loading": "Chargement...",
+    "loadStatistics": "Charger les statistiques",
+    "error": "Erreur",
+    "analyticCodes": "Codes analytiques",
+    "totalKm": "Total km",
+    "avgKm": "Moyenne km",
+    "maxKm": "Max km",
+    "distanceByCode": "Distance par code analytique",
+    "detailedStats": "Statistiques détaillées",
+    "totalDistance": "Distance totale",
+    "periodStart": "Début de période",
+    "periodEnd": "Fin de période",
+    "group": "Groupe",
+    "noData": "Aucune statistique disponible",
+    "clickToLoad": "Cliquez sur \"Charger les statistiques\" pour récupérer les données",
+    "groupByOptions": {
+      "none": "Aucun",
+      "day": "Jour",
+      "month": "Mois",
+      "year": "Année"
+    }
+  },
+  "common": {
+    "km": "km"
+  }
+}
+

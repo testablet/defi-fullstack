@@ -1,0 +1,15 @@
+node_modules
+vendor
+.git
+.gitignore
+.env
+.env.local
+coverage
+.nyc_output
+.phpunit.cache
+var/cache
+var/log
+*.log
+
+
+

@@ -1,142 +1,310 @@
-# 🚆 Défi Full stack - Routage de Train & Statistiques
+# 🚆 Train Routing System - Full Stack Application
 
-Bienvenue dans notre défi technique !  
-Avant même l’envoi de ton CV, nous te proposons de passer par cette étape pratique. Pourquoi ? Parce que nous croyons que **le code parle plus fort que les mots**.
+Application complète de routage de trains avec calcul de distances, statistiques analytiques, et interface utilisateur moderne.
 
-Ce défi est ton ticket d’entrée : il te permet de nous montrer l’étendue de tes capacités à **collaborer, analyser et livrer du code de qualité**. Tu le réalises chez toi, dans ton environnement, avec tes outils, mais l’objectif est de voir comment tu t’adaptes à notre culture technique et à nos pratiques **DevSecOps**.
+## 📋 Table des matières
 
----
+- [Architecture](#architecture)
+- [Prérequis](#prérequis)
+- [Installation](#installation)
+- [Démarrage](#démarrage)
+- [API Documentation](#api-documentation)
+- [Tests](#tests)
+- [CI/CD](#cicd)
+- [Structure du projet](#structure-du-projet)
 
-## 🤝 Esprit du défi
-Ce défi est autant une **démonstration de tes compétences** qu’une **simulation de collaboration** dans notre environnement.  
-Nous ne cherchons pas la perfection : nous voulons voir ta capacité à t’approprier un contexte technique exigeant, à produire du code de qualité et à réfléchir comme un membre de l’équipe.
+## 🏗️ Architecture
 
-Tu es invité à démontrer ta capacité à :
-- Travailler avec des outils similaires aux nôtres (**Docker, Composer, GitLab, PHPUnit**, etc.)
-- Appliquer des pratiques comme **l’analyse statique**, le **TDD**, le **DDD** et l’**intégration/déploiement continus**
-- Produire un code **propre, maintenable et réfléchi**, comme si tu faisais déjà partie de l’équipe
+### Backend
+- **Framework**: Symfony 7.1 (PHP 8.4)
+- **Architecture**: DDD (Domain-Driven Design)
+- **Base de données**: PostgreSQL 16
+- **ORM**: Doctrine 3
+- **API**: REST conforme OpenAPI 3.1
+- **Authentification**: JWT (Lexik JWT Bundle)
+- **Tests**: PHPUnit 11 avec couverture ≥80%
+- **Linting**: PHPCS (PSR-12), PHPStan (niveau 8)
 
-> 💡 Conseil : documente tes choix, structure ton code et montre-nous comment tu raisonnes. C’est tout aussi important que le résultat final.
+### Frontend
+- **Framework**: Vue.js 3 + TypeScript 5
+- **UI**: Vuetify 3
+- **State Management**: Pinia
+- **HTTP Client**: Axios
+- **Charts**: Chart.js + vue-chartjs
+- **Tests**: Vitest avec couverture ≥80%
+- **Linting**: ESLint + Prettier
 
----
+### Infrastructure
+- **Orchestration**: Docker Compose
+- **Reverse Proxy**: Nginx
+- **CI/CD**: GitHub Actions
+- **Security**: Trivy, npm audit, PHPStan
 
-## 🧩 Notre environnement
-Nous produisons des applications web modernes, sécurisées et performantes, en utilisant principalement :
-- **Backend** : PHP 8 (Symfony 7 et CakePHP 5)
-- **Frontend** : Vue.js 3 + Vuetify 3 + TypeScript
-- **Tests** : PHPUnit, Vitest, Jest
-- **Linter** : PHPCS, ESLint, Prettier
-- **UI/UX** : Storybook
-- **Base de données** : PostgreSQL ou MariaDB
-- **Infrastructure** : Docker, Docker Compose, TeamCity (CI/CD), Gitlab (code versioning)
-- **Méthodologies** : TDD, DDD, XP
+## 📦 Prérequis
 
-> 💡 Conseil : inspire-toi de nos pratiques et de nos outils.
+- Docker Engine 25+ et Docker Compose
+- Git
 
----
+## 🚀 Installation
 
-# 🧾 Instructions pour réaliser le défi
-Tu dois réaliser une solution à minimum deux niveaux. Un backend PHP 8 exposant une API REST conforme à la spécification OpenAPI fournie ainsi qu'un frontend TypeScript consommant cette API.
+1. **Cloner le repository**
+   ```bash
+   git clone <repository-url>
+   cd defi-fullstack
+   ```
 
-## Le contexte
-Dans le métier de la circulation ferroviaire, les trajets de chaque train sont répertoriés dans un système de gestion du trafic. Un train circule sur une ligne, ces lignes sont parfois connectées, permettant à un train de circuler sur plusieurs lignes.
-Chaque trajet est associé à un code analytique, qui permet de catégoriser le type de trajet (ex : fret, passager, maintenance, etc.).
-Les données de statistiques générées sont ensuite utilisées pour diverses analyses.
+2. **Configurer les variables d'environnement**
+   
+   Créer un fichier `.env` à la racine (optionnel, valeurs par défaut disponibles) :
+   ```env
+   APP_SECRET=your-secret-key-32-chars-minimum
+   JWT_PASSPHRASE=your-jwt-passphrase
+   ```
 
-## Le besoin métier
-La solution doit permettre à l'utilisateur de calculer une distance entre deux stations de train. La liste des stations ainsi que les distances entre les stations sont fournies dans les fichiers `stations.json` et `distances.json`.
+3. **Générer les clés JWT** (première fois uniquement)
+   ```bash
+   docker compose run --rm backend php bin/console lexik:jwt:generate-keypair
+   ```
 
-Tu peux choisir de persister les saisies des utilisateurs, cela t'aidera à compléter les points Bonus (voir ci-dessous), mais ce n'est pas obligatoire.
+## ▶️ Démarrage
 
-Il se peut que tu aies des questions ou des incertitudes sur la compréhension du besoin, dans ce cas, tu es libre de faire des hypothèses raisonnables et de les documenter.
+### Démarrage complet avec Docker Compose
 
-> 💡 Conseil : applique le principe fondamental de [qualité du craftsmanship](https://fr.wikipedia.org/wiki/Software_craftsmanship#Fondamentalement_:_un_retour_non_r%C3%A9f%C3%A9renc%C3%A9_%C3%A0_XP).
+```bash
+docker compose up -d
+```
 
-## Livrables attendus
-Lorsque tu as terminé, envoie à n.girardet[at]mob[point]ch, ton dossier de candidature complet ainsi qu'un lien vers le projet contenant :
-- Le projet prêt à déployer, au format que tu préfères : un repo GitHub avec un docker-compose, une image publiée dans un registre, un fichier zip dans une release GitHub...
-- Les instructions de déploiement claires
-- L'accès au repository du code source, y compris l'historique des commits
+Cette commande démarre :
+- PostgreSQL (port 5432)
+- Backend PHP-FPM (port 9000)
+- Frontend Nginx (port 80)
+- Reverse Proxy Nginx (port 80)
 
-> ⚠️ Assure-toi qu'un lien vers ton projet est visible et actif dans ton e-mail. 👉 Nous ne traiterons pas les dossiers de candidatures avant d'avoir vu le code.
+### Accès à l'application
 
-## ⏳ Durée du défi
+- **Frontend**: http://localhost
+- **API**: http://localhost/api/v1
+- **API Documentation (Swagger)**: http://localhost/api/doc
+- **PostgreSQL**: localhost:5432
 
-Tu n’as aucune limite de temps pour réaliser ce défi. Avance à ton rythme, prends le temps de réfléchir et de coder comme tu le souhaites. Ce repository restera ouvert tant que nous n’aurons pas trouvé la bonne personne pour rejoindre l’équipe. Une fois que ce sera le cas, nous le fermerons.
+### Initialisation de la base de données
 
-> 💡 Même si la vitesse n’est pas un critère, nous examinerons les candidatures dans l’ordre où elles nous parviennent.
+```bash
+# Exécuter les migrations
+docker compose exec backend php bin/console doctrine:migrations:migrate --no-interaction
 
-## Et après ?
-Nous procéderons à une revue de ton code et nous te contacterons pour t'informer de la suite.
+# Charger les stations et distances
+docker compose exec backend php bin/console app:load-stations
+```
 
-> 🚫 N'envoie pas de fichiers volumineux (ex : 30 Mo) par e-mail
+### Génération d'un token JWT pour les tests
 
----
+```bash
+# Créer un utilisateur de test (à implémenter selon vos besoins)
+# Pour l'instant, vous pouvez utiliser un token généré manuellement
+```
 
-## 🎯 Objectifs
+## 📚 API Documentation
 
-- Implémenter un **backend PHP 8** exposant une API conforme à la spécification **OpenAPI** fournie.
-- Développer un **frontend TypeScript** consommant cette API.
-- Fournir une **couverture de code** mesurable (tests unitaires et d’intégration).
-- Déployer l’application avec un minimum d’opérations via **Docker** ou **Docker Compose**.
-- Mettre en place un **pipeline CI/CD complet** (build, tests, coverage, lint, déploiement).
-- Utiliser un **versioning de code** clair et structuré.
-- Garantir des **communications sécurisées** (HTTPS, gestion des secrets, authentification).
+### Endpoints
 
----
+#### POST /api/v1/routes
+Crée un nouveau trajet entre deux stations.
 
-## 🏗️ Architecture attendue
+**Request Body:**
+```json
+{
+  "fromStationId": "MX",
+  "toStationId": "ZW",
+  "analyticCode": "ANA-123"
+}
+```
 
-- **Backend**  
-  - PHP 8.4 obligatoire.
-  - Utilisation d'un Framework (Symfony, CakePHP, Slim, Laravel,...) facultatif.  
-  - Implémentation stricte de l’API OpenAPI fournie.  
-  - Tests avec PHPUnit + rapport de couverture.  
+**Response (201):**
+```json
+{
+  "id": "uuid",
+  "fromStationId": "MX",
+  "toStationId": "ZW",
+  "analyticCode": "ANA-123",
+  "distanceKm": 45.67,
+  "path": ["MX", "CGE", "VUAR", "...", "ZW"],
+  "createdAt": "2025-01-01T12:00:00+00:00"
+}
+```
 
-- **Frontend**
-  - TypeScript 5 obligatoire.
-  - Interface utilisateur pour :  
-    - Créer un trajet (station A → station B) + type de trajet.  
-    - Consulter les statistiques par code analytique.
-  - Tests avec Vitest/Jest + rapport de couverture.
+#### GET /api/v1/stats/distances
+Récupère les statistiques agrégées par code analytique.
 
-- **Infrastructure** 
-  - Docker Engine 25
-  - Docker/Docker Compose pour orchestrer backend, frontend, base de données et reverse proxy (si nécessaire).  
-  - Déploiement en une commande (`docker compose up -d`).  
+**Query Parameters:**
+- `from` (optional): Date de début (format: YYYY-MM-DD)
+- `to` (optional): Date de fin (format: YYYY-MM-DD)
+- `groupBy` (optional): Groupement (none, day, month, year)
 
-> 💡 Conseil : documente tes choix dans une documentation.
+**Response (200):**
+```json
+{
+  "from": "2025-01-01",
+  "to": "2025-01-31",
+  "groupBy": "none",
+  "items": [
+    {
+      "analyticCode": "ANA-123",
+      "totalDistanceKm": 150.5,
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-01-31"
+    }
+  ]
+}
+```
 
----
+### Authentification
 
-## 🔄 CI/CD complet
+Tous les endpoints (sauf `/api/doc`) nécessitent un token JWT dans le header :
+```
+Authorization: Bearer <token>
+```
 
-Voici notre point de vue de la représentation d'un CI/CD complet :
-- Build : images backend/frontend
-- Qualité : lint + tests + coverage (fail si seuils non atteints)
-- Sécurité : SAST/DAST (ex: phpstan, npm audit, Trivy)
-- Release : tagging sémantique ou calendaire, changelog
-- Delivery : push images vers registry, déploiement automatisé (Compose ou SSH)
+## 🧪 Tests
 
-## 🤖 Code généré par IA
+### Backend
 
-Tu es libre d’utiliser les outils qui te semblent les plus adaptés pour réaliser ce défi. Cela inclut bien sûr le code généré par des intelligences artificielles. Nous savons que ces outils font partie du quotidien des développeurs, et nous voulons voir comment tu es capable de les intégrer intelligemment dans ta solution.
+```bash
+# Lancer les tests
+docker compose exec backend composer test
 
-## 🎁 Les points Bonus
-- Implémenter un algorithme de routage (ex. Dijkstra) pour calculer la distance entre deux stations.
-- Exposer un endpoint de statistiques agrégées par code analytique.
-- Visualiser ces statistiques dans le frontend (graphique/tableau).
+# Avec couverture
+docker compose exec backend composer test-coverage
 
-## ✅ Critères d’évaluation
-- Couverture : rapports générés et seuils respectés
-- OpenAPI : conformité stricte des endpoints et schémas
-- Docker : démarrage en une ou deux commandes, documentation claire
-- Frontend : UX propre, typé en TypeScript, tests présents
-- CI/CD : pipeline fiable, scans basiques de sécurité, images publiées
-- Sécurité : HTTPS, auth, headers, gestion des secrets
-- Qualité : code lisible, commits atomiques, architecture cohérente
+# Linter
+docker compose exec backend composer lint
 
----
-## 🚀 À toi de jouer !
-Nous avons hâte de découvrir ta solution et de voir comment tu abordes ce défi.  
-Bonne chance, et surtout amuse-toi en codant !
+# Analyse statique
+docker compose exec backend composer stan
+```
+
+### Frontend
+
+```bash
+# Lancer les tests
+docker compose exec frontend npm run test
+
+# Avec couverture
+docker compose exec frontend npm run test:coverage
+
+# Linter
+docker compose exec frontend npm run lint
+```
+
+## 🔄 CI/CD
+
+Le pipeline GitHub Actions exécute automatiquement :
+
+1. **Tests Backend**
+   - PHPUnit avec couverture
+   - PHPStan (analyse statique)
+   - PHPCS (linting PSR-12)
+
+2. **Tests Frontend**
+   - Vitest avec couverture
+   - ESLint
+
+3. **Security Scan**
+   - Trivy (vulnérabilités)
+   - npm audit
+
+4. **Build & Push**
+   - Construction des images Docker
+   - Push vers GitHub Container Registry
+
+5. **Release**
+   - Génération automatique de releases avec changelog
+
+## 📁 Structure du projet
+
+```
+defi-fullstack/
+├── backend/                 # Backend Symfony
+│   ├── config/             # Configuration Symfony
+│   ├── migrations/         # Migrations Doctrine
+│   ├── src/
+│   │   ├── Domain/        # Domain Layer (DDD)
+│   │   │   ├── Station/
+│   │   │   ├── Distance/
+│   │   │   ├── Route/
+│   │   │   └── Routing/
+│   │   ├── Infrastructure/ # Infrastructure Layer
+│   │   │   ├── API/
+│   │   │   ├── Persistence/
+│   │   │   └── Security/
+│   │   └── Command/
+│   ├── tests/             # Tests PHPUnit
+│   └── Dockerfile
+├── frontend/              # Frontend Vue.js
+│   ├── src/
+│   │   ├── views/         # Pages Vue
+│   │   ├── stores/        # Pinia stores
+│   │   ├── services/      # API services
+│   │   └── router/        # Vue Router
+│   ├── tests/             # Tests Vitest
+│   └── Dockerfile
+├── nginx/                 # Configuration Nginx
+├── docker-compose.yml     # Orchestration Docker
+├── .github/workflows/     # CI/CD GitHub Actions
+└── README.md
+```
+
+## 🎯 Fonctionnalités
+
+### Implémentées
+- ✅ Calcul de trajet entre deux stations (algorithme Dijkstra)
+- ✅ Création de trajets avec code analytique
+- ✅ Statistiques agrégées par code analytique
+- ✅ Interface utilisateur pour créer des trajets
+- ✅ Visualisation des statistiques (graphiques + tableaux)
+- ✅ Authentification JWT
+- ✅ Tests unitaires et d'intégration (≥80% couverture)
+- ✅ CI/CD complet
+- ✅ Documentation OpenAPI/Swagger
+
+### Bonus
+- ✅ Algorithme Dijkstra pour le routage optimal
+- ✅ Endpoint de statistiques avec groupement temporel
+- ✅ Visualisation graphique des statistiques
+- ✅ Persistance des trajets en base de données
+
+## 🔒 Sécurité
+
+- Authentification JWT pour toutes les routes API
+- Headers de sécurité configurés
+- Validation des entrées côté backend
+- Scan de vulnérabilités dans le pipeline CI/CD
+- Gestion des secrets via variables d'environnement
+
+## 📝 Notes de développement
+
+### Algorithme de routage
+
+L'application utilise l'algorithme de Dijkstra pour calculer le chemin le plus court entre deux stations. Le graphe est construit à partir des distances fournies dans `distances.json` et est bidirectionnel (les trains peuvent circuler dans les deux sens).
+
+### Architecture DDD
+
+Le backend suit une architecture Domain-Driven Design :
+- **Domain Layer**: Entités métier pures (Station, Route, Distance)
+- **Infrastructure Layer**: Implémentations concrètes (Doctrine, API Controllers)
+- **Application Layer**: Services applicatifs (DijkstraRoutingService)
+
+## 🤝 Contribution
+
+1. Créer une branche depuis `develop`
+2. Implémenter les changements avec tests
+3. S'assurer que tous les tests passent et que la couverture ≥80%
+4. Créer une Pull Request
+
+## 📄 Licence
+
+MIT
+
+## 👤 Auteur
+
+Développé dans le cadre du défi technique MOB.

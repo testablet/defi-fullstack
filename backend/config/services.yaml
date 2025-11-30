@@ -1,0 +1,33 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    App\Domain\Routing\Service\DijkstraRoutingService:
+        arguments:
+            $stations: '@App\Domain\Station\Repository\StationRepositoryInterface'
+            $distances: '@App\Domain\Distance\Repository\DistanceRepositoryInterface'
+
+    App\Infrastructure\Persistence\Doctrine\Repository\StationRepository:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+
+    App\Infrastructure\Persistence\Doctrine\Repository\DistanceRepository:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+
+    App\Infrastructure\Persistence\Doctrine\Repository\RouteRepository:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+
+
+

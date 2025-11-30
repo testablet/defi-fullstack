@@ -1,0 +1,134 @@
+{
+  "nav": {
+    "home": "Home",
+    "routes": "Routes",
+    "stats": "Statistics"
+  },
+  "home": {
+    "title": "Train Routing System",
+    "subtitle": "Complete train routing solution with optimized distance calculation and advanced statistical analysis",
+    "calculateRoute": "Calculate a route",
+    "viewStats": "View statistics",
+    "aboutTitle": "About the project",
+    "aboutSubtitle": "A modern full-stack application for managing and analyzing railway routes",
+    "aboutText1": "This project was developed as part of the {challenge} from {mob}. It is a complete application that allows calculating optimal routes between different railway stations using advanced routing algorithms.",
+    "aboutText2": "The application offers an intuitive user interface to create routes between stations, visualize calculated journeys, and analyze aggregated statistics by analytic code. It also integrates a secure authentication system and a complete REST API for integration with other systems.",
+    "challenge": "fullstack challenge",
+    "mob": "MOB - Montreux Oberland Bernois",
+    "features": {
+      "routeCalculation": {
+        "title": "Optimal route calculation",
+        "description": "Dijkstra algorithm to find the shortest path between two stations"
+      },
+      "analytics": {
+        "title": "Analytical statistics",
+        "description": "Aggregated route analysis by analytic code with graphical visualizations"
+      },
+      "interface": {
+        "title": "Intuitive interface",
+        "description": "Modern and responsive design with interactive journey visualization"
+      },
+      "api": {
+        "title": "Complete REST API",
+        "description": "OpenAPI 3.1 compliant API with integrated Swagger documentation"
+      },
+      "auth": {
+        "title": "Secure authentication",
+        "description": "JWT system for authentication and endpoint security"
+      },
+      "docker": {
+        "title": "Docker deployment",
+        "description": "Containerized infrastructure with Docker Compose for simplified deployment"
+      }
+    },
+    "techTitle": "Technical architecture",
+    "techSubtitle": "A modern architecture based on software development best practices",
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "infrastructure": "Infrastructure & DevOps",
+    "practices": "Development practices",
+    "cicd": "CI/CD & Quality",
+    "architecture": {
+      "ddd": {
+        "title": "Domain-Driven Design",
+        "description": "DDD-based architecture with clear separation between business domain, infrastructure and application. Business code is isolated from technical details."
+      },
+      "tdd": {
+        "title": "Test-Driven Development",
+        "description": "Test-driven development with ≥80% code coverage for backend and frontend. Complete unit and integration tests."
+      },
+      "cleanCode": {
+        "title": "Clean Code & Standards",
+        "description": "Strict compliance with PSR-12 standards for PHP, ESLint/Prettier for TypeScript, and static analysis with PHPStan level 8."
+      },
+      "cicd": {
+        "title": "Automated CI/CD",
+        "description": "Complete GitHub Actions pipeline with build, tests, linting, security scanning, and automatic deployment. Quality guaranteed at every commit."
+      }
+    },
+    "mobTitle": "Developed for MOB",
+    "mobSubtitle": "Montreux Oberland Bernois",
+    "mobText1": "This project was carried out as part of the {challenge} from {mob}, demonstrating the application of modern software development best practices, software architecture, and continuous deployment.",
+    "mobText2": "The application illustrates a professional approach to full-stack development, with clear separation of responsibilities, an evolutive architecture, and particular attention to code quality, tests, and security.",
+    "developedBy": "Developed by {name}",
+    "copyright": "Copyright © {year} {company}"
+  },
+  "routes": {
+    "title": "Calculate Your Route",
+    "subtitle": "Find the optimal path between stations using advanced routing algorithms",
+    "createRoute": "Create New Route",
+    "departureStation": "Departure Station",
+    "arrivalStation": "Arrival Station",
+    "selectDeparture": "Select departure station",
+    "selectArrival": "Select arrival station",
+    "analyticCode": "Analytic Code",
+    "enterAnalyticCode": "Enter analytic code (e.g., ANA-123)",
+    "calculating": "Calculating...",
+    "calculateRoute": "Calculate Route",
+    "error": "Error",
+    "routeCalculated": "Route Calculated Successfully!",
+    "optimalPathFound": "Your optimal path has been found",
+    "totalDistance": "Total Distance",
+    "kilometers": "kilometers",
+    "stations": "Stations",
+    "stationsCount": "stations",
+    "path": "Path",
+    "analyticCodeLabel": "Analytic Code",
+    "viewPath": "View Path",
+    "noRoute": "No route calculated yet",
+    "calculateFirst": "Calculate a route to see results here"
+  },
+  "stats": {
+    "title": "Analytics Dashboard",
+    "subtitle": "Track and analyze route statistics by analytic code",
+    "filters": "Filters",
+    "fromDate": "From Date",
+    "toDate": "To Date",
+    "groupBy": "Group By",
+    "loading": "Loading...",
+    "loadStatistics": "Load Statistics",
+    "error": "Error",
+    "analyticCodes": "Analytic Codes",
+    "totalKm": "Total km",
+    "avgKm": "Avg km",
+    "maxKm": "Max km",
+    "distanceByCode": "Distance by Analytic Code",
+    "detailedStats": "Detailed Statistics",
+    "totalDistance": "Total Distance",
+    "periodStart": "Period Start",
+    "periodEnd": "Period End",
+    "group": "Group",
+    "noData": "No statistics available",
+    "clickToLoad": "Click \"Load Statistics\" to fetch data",
+    "groupByOptions": {
+      "none": "None",
+      "day": "Day",
+      "month": "Month",
+      "year": "Year"
+    }
+  },
+  "common": {
+    "km": "km"
+  }
+}
+

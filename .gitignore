@@ -1,1 +1,60 @@
+# Dependencies
+/vendor/
+/node_modules/
+/.composer/
+
+# Build outputs
+/dist/
+/build/
+/.next/
+/out/
+
+# Environment
+.env
+.env.local
+.env.*.local
+*.env
+
+# IDE
 .idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+var/log/
+
+# Cache
+var/cache/
+var/sessions/
+.cache/
+
+# Coverage
+coverage/
+*.coverage
+.nyc_output/
+phpunit.xml.cache
+
+# Docker
+.docker/
+
+# SSL certificates (keep structure, ignore actual certs)
+nginx/ssl/*.key
+nginx/ssl/*.crt
+nginx/ssl/*.pem
+
+# JWT keys (keep structure, ignore actual keys)
+backend/config/jwt/*.pem
+backend/config/jwt/*.key
+
+# Temporary files
+tmp/
+temp/
+*.tmp
